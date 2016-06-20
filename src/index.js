@@ -3,7 +3,10 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-import App from './containers/App/App';
+import {
+  App,
+  Form
+} from 'containers';
 
 ReactDOM.render((
   <MuiThemeProvider>
