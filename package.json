@@ -1,0 +1,90 @@
+{
+  "name": "public-transportation-app",
+  "version": "1.0.0",
+  "description": "An application that allows users to select a departure and arrival train station",
+  "main": "server.js",
+  "scripts": {
+    "start": "better-npm-run start",
+    "build": "rimraf dist && better-npm-run build",
+    "build:run": "better-npm-run build:run",
+    "deploy": "npm run build && surge -p dist --domain public-transporation.surge.sh"
+  },
+  "betterScripts": {
+    "start": {
+      "command": "webpack-dev-server",
+      "env": {
+        "NODE_ENV": "development"
+      }
+    },
+    "build": {
+      "command": "webpack --progress --profile --colors --bail",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    },
+    "build:run": {
+      "command": "webpack-dev-server --progress --profile --colors --bail",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chengsieuly/Senior-Web-Development-Nanodegree/P2-Public-Transporation-App.git"
+  },
+  "author": "Cheng Ly",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chengsieuly/Senior-Web-Development-Nanodegree/P2-Public-Transporation-App"
+  },
+  "homepage": "https://github.com/chengsieuly/Senior-Web-Development-Nanodegree/P2-Public-Transporation-App#readme",
+  "devDependencies": {
+    "autoprefixer": "^6.3.6",
+    "babel-cli": "^6.6.5",
+    "babel-core": "^6.7.2",
+    "babel-eslint": "^6.0.2",
+    "babel-loader": "^6.2.4",
+    "babel-plugin-transform-object-rest-spread": "^6.6.5",
+    "babel-preset-es2015": "^6.5.0",
+    "babel-preset-react": "^6.5.0",
+    "babel-preset-react-hmre": "^1.1.1",
+    "babel-preset-survivejs-kanban": "^0.3.3",
+    "clean-webpack-plugin": "^0.1.8",
+    "compression": "^1.6.1",
+    "copy-webpack-plugin": "^3.0.1",
+    "css-loader": "^0.23.1",
+    "eslint": "^2.4.0",
+    "eslint-plugin-react": "^4.2.3",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.8.5",
+    "html-webpack-plugin": "^2.15.0",
+    "html-webpack-template": "^4.0.0",
+    "node-sass": "^3.4.2",
+    "postcss-loader": "^0.8.2",
+    "react-addons-test-utils": "^15.1.0",
+    "react-addons-update": "^15.1.0",
+    "react-hot-loader": "^1.3.0",
+    "redux-devtools": "^3.1.1",
+    "redux-devtools-dock-monitor": "^1.1.0",
+    "redux-devtools-log-monitor": "^1.0.5",
+    "resolve-url-loader": "^1.4.3",
+    "sass-loader": "^3.2.0",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.12.14",
+    "webpack-dev-server": "^1.14.1",
+    "webpack-merge": "^0.10.0"
+  },
+  "dependencies": {
+    "immutable": "^3.7.6",
+    "material-ui": "^0.15.1",
+    "react": "^15.0.1",
+    "react-addons-transition-group": "^15.0.1",
+    "react-dom": "^15.0.1",
+    "react-helmet": "^3.1.0",
+    "react-redux": "^4.4.1",
+    "react-tap-event-plugin": "^1.0.0",
+    "redux": "^3.3.1"
+  }
+}
