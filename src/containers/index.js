@@ -1,2 +1,2 @@
-export { default as App } from './App/App';
-export { default as Form } from './App/App';
+export { default as AppContainer } from './App/app.container';
+export { default as FormContainer } from './Form/form.container';

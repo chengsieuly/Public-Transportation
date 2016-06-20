@@ -1,17 +1,16 @@
+import headers from '../../../config/headers';
+
 import React from 'react';
 import Helmet from 'react-helmet';
 
 // Material UI
-import injectTapEventPlugin from 'react-tap-event-plugin';
 import AppBar from 'material-ui/AppBar';
 
-import headers from '../../../config/headers';
+import {
+  FormContainer
+} from 'containers';
 
-export default class App extends React.Component {
-  componentWillMount() {
-    injectTapEventPlugin();
-  }
-
+export default class AppContainer extends React.Component {
   render() {
     return (
       <div>
@@ -21,6 +20,7 @@ export default class App extends React.Component {
           iconClassNameLeft="fa fa-train"
           zDepth={2}>
         </AppBar>
+        <FormContainer />
       </div>
     )
   }
