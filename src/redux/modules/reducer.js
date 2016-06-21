@@ -1,1 +1,1 @@
-export { default as formContainerReducer } from './FormContainer/actionCreators';
+export { default as formContainerReducer } from './FormContainer/reducer';
