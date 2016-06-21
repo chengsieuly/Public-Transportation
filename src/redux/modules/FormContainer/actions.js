@@ -7,10 +7,26 @@ import {
 } from './constants';
 
 export function fetchTrainNames() {
+  return function (dispatch) {
+    return fetch('http://api.metro.net/agencies/lametro/routes/')
+            .then(trains => {
+              dispatch(fetchTrainNamesRequest());
+              return trains.json();
+            })
+            .then(trainsInJSON => {
+              let listOfTrains = [];
+              trainsInJSON.items.map(train => listOfTrains.push(train.display_name));
+              dispatch(fetchTrainNamesSucceeded(listOfTrains));
+            })
+            .catch(()=> dispatch(fetchTrainNamesFailed()));
+  };
+}
+
+export function fetchTrainNamesRequest() {
   return {
     type: FETCH_TRAIN_NAMES_REQUEST,
     isFetching: true
-  };
+  }
 }
 
 export function fetchTrainNamesFailed() {

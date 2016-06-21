@@ -15,6 +15,7 @@ import {
 class FormContainer extends React.Component {
   static propTypes = {
     fetchTrainNames: React.PropTypes.func.isRequired,
+    fetchTrainNamesRequest: React.PropTypes.func.isRequired,
     fetchTrainNamesFailed: React.PropTypes.func.isRequired,
     fetchTrainNamesSucceeded: React.PropTypes.func.isRequired
   }
@@ -24,32 +25,7 @@ class FormContainer extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://api.metro.net/agencies/lametro/routes/')
-      .then(response => {
-        this.updateState('fetching');
-        return response.json();
-      })
-      .then(responseInJSON => {
-        this.updateState('succeeded', responseInJSON);
-      })
-      .catch(() => {
-        this.updateState('failed')
-      });
-  }
-
-  updateState(fetchMode, response) {
-    switch (fetchMode) {
-      case 'fetching':
-        return this.props.fetchTrainNames();
-      case 'succeeded':
-        let listOfTrains = [];
-        response.items.map(train => listOfTrains.push(train.display_name));
-        return this.props.fetchTrainNamesSucceeded(listOfTrains);
-      case 'failed':
-        return this.props.fetchTrainNamesFailed();
-      default:
-        return this.props.fetchTrainNames();
-    }
+    this.props.fetchTrainNames();
   }
 
   render() {
