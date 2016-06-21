@@ -7,34 +7,34 @@ import AutoComplete from 'material-ui/AutoComplete';
 
 @connect(
   state => ({
-    trains: state.formContainerReducer.trains
+    buses: state.formContainerReducer.buses
   }),
   dispatch => bindActionCreators(actions, dispatch)
 )
 
-export default class FormTrainSelectComponent extends React.Component {
+export default class FormBusSelectComponent extends React.Component {
   static propTypes = {
-    trains: React.PropTypes.arrayOf(React.PropTypes.string)
+    buses: React.PropTypes.arrayOf(React.PropTypes.string),
+    updateSelectedRoute: React.PropTypes.func.isRequired
   }
 
-  validateInput(train) {
-    return this.props.trains.includes(train);
+  validateInput(bus) {
+    return this.props.buses.includes(bus);
   }
 
-  handleUpdateInput(train) {
-    if (!this.validateInput(train)) return;
+  handleUpdateInput(bus) {
+    if (!this.validateInput(bus)) return;
 
-    if (this.props.inputType === 'departure') this.props.updateSelectedDepartureTrain(train);
-    else if (this.props.inputType === 'arrival') this.props.updateSelectedArrivalTrain(train);
+    this.props.updateSelectedRoute(bus);
   }
 
   render() {
     return (
       <AutoComplete {...this.props}
-        dataSource={this.props.trains}
+        dataSource={this.props.buses}
         filter={AutoComplete.caseInsensitiveFilter}
         fullWidth={true}
-        hintText="Select Train"
+        hintText="Select Route"
         onUpdateInput={this.handleUpdateInput.bind(this)}
         onNewRequest={this.handleUpdateInput.bind(this)} />
     )

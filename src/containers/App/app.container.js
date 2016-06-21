@@ -16,8 +16,8 @@ export default class AppContainer extends React.Component {
       <div>
         <Helmet {...headers} />
         <AppBar
-          title="Get Schedules for Metro"
-          iconClassNameLeft="fa fa-train"
+          title="Get Schedules for LA Metro"
+          iconClassNameLeft="fa fa-bus"
           zDepth={2}>
         </AppBar>
         <FormContainer />
