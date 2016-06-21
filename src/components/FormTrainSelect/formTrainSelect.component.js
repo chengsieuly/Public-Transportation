@@ -13,6 +13,9 @@ import AutoComplete from 'material-ui/AutoComplete';
 )
 
 export default class FormTrainSelectComponent extends React.Component {
+  static propTypes = {
+    trains: React.PropTypes.arrayOf(React.PropTypes.string)
+  }
 
   validateInput(train) {
     return this.props.trains.includes(train);

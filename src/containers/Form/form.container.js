@@ -13,6 +13,12 @@ import {
 )
 
 class FormContainer extends React.Component {
+  static propTypes = {
+    fetchTrainNames: React.PropTypes.func.isRequired,
+    fetchTrainNamesFailed: React.PropTypes.func.isRequired,
+    fetchTrainNamesSucceeded: React.PropTypes.func.isRequired
+  }
+
   constructor(props) {
     super(props);
   }
@@ -59,12 +65,5 @@ class FormContainer extends React.Component {
     );
   }
 }
-
-FormContainer.propTypes = {
-  trains: React.PropTypes.arrayOf(React.PropTypes.string),
-  fetchTrainNames: React.PropTypes.func.isRequired,
-  fetchTrainNamesFailed: React.PropTypes.func.isRequired,
-  fetchTrainNamesSucceeded: React.PropTypes.func.inRequired
-};
 
 export default FormContainer;
