@@ -1,8 +1,7 @@
 import {
   FETCH_BUS_NAMES_REQUEST,
   FETCH_BUS_NAMES_FAILURE,
-  FETCH_BUS_NAMES_SUCCESS,
-  UPDATE_SELECTED_ROUTE
+  FETCH_BUS_NAMES_SUCCESS
 } from './constants';
 
 const initialState = {
@@ -27,10 +26,6 @@ const reducer = (state = initialState, action={}) => {
       return Object.assign({}, state, {
         isFetching: action.isFetching,
         buses: action.buses
-      });
-    case UPDATE_SELECTED_ROUTE:
-      return Object.assign({}, state, {
-        selectedRoute: action.selectedRoute
       });
     default:
       return state;

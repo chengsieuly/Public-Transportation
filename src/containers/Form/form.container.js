@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import * as actions from 'redux/modules/FormContainer/actions';
 
 import {
+  FormBusRoutesComponent,
   FormBusSelectComponent
 } from 'components';
 
@@ -30,8 +31,11 @@ class FormContainer extends React.Component {
 
   render() {
     return (
-      <FormBusSelectComponent
-        floatingLabelText="Bus Route Number" />
+      <div>
+        <FormBusSelectComponent
+          floatingLabelText="Bus Route Number" />
+        <FormBusRoutesComponent />
+      </div>
     );
   }
 }

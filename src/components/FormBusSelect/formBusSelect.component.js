@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as actions from 'redux/modules/FormContainer/actions';
+import * as actions from 'redux/modules/FormBusSelect/actions';
 
 import AutoComplete from 'material-ui/AutoComplete';
 

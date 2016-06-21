@@ -1,8 +1,7 @@
 import {
   FETCH_BUS_NAMES_REQUEST,
   FETCH_BUS_NAMES_FAILURE,
-  FETCH_BUS_NAMES_SUCCESS,
-  UPDATE_SELECTED_ROUTE
+  FETCH_BUS_NAMES_SUCCESS
 } from './constants';
 
 export function fetchBusNames() {
@@ -41,12 +40,5 @@ export function fetchBusNamesSucceeded(buses) {
     type: FETCH_BUS_NAMES_SUCCESS,
     isFetching: false,
     buses: buses
-  }
-}
-
-export function updateSelectedRoute(bus) {
-  return {
-    type: UPDATE_SELECTED_ROUTE,
-    selectedDepartureBus: bus
   }
 }
