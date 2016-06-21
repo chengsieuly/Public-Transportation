@@ -7,6 +7,7 @@ const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 // Other Plugins
 const autoprefixer = require('autoprefixer');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const DefinePlugin = require('webpack/lib/DefinePlugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -17,6 +18,10 @@ module.exports = {
   },
 
   resolve: {
+    modulesDirectories: [
+      'src',
+      'node_modules'
+    ],
     extensions: ['', '.js', '.jsx']
   },
 
@@ -41,6 +46,12 @@ module.exports = {
     new CopyWebpackPlugin([
       { from: 'src/assets', to: 'assets' }
     ]),
+
+    new DefinePlugin({
+      "process.env": {
+         NODE_ENV: JSON.stringify(process.env.NODE_ENV)
+       }
+    }),
 
     new ExtractTextPlugin('[name].[hash].css'),
 

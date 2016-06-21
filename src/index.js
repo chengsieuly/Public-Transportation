@@ -1,12 +1,45 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-import App from './containers/App/App';
+import configureStore from './redux/store';
 
-ReactDOM.render((
+import {
+  AppContainer,
+  DevTools
+} from 'containers';
+
+const store = configureStore();
+
+const component = (
   <MuiThemeProvider>
-    <App />
+    <AppContainer />
   </MuiThemeProvider>
-), document.getElementById('app'));
+);
+
+switch (process.env.NODE_ENV) {
+  case 'development':
+    render((
+      <Provider store={store}>
+        <div>
+          {component}
+          <DevTools />
+        </div>
+      </Provider>
+    ), document.getElementById('app'));
+    break;
+  case 'production':
+    render((
+      <Provider store={store}>
+        {component}
+      </Provider>
+    ), document.getElementById('app'));
+    break;
+  default:
+    render((
+      <Provider store={store}>
+        {component}
+      </Provider>
+    ), document.getElementById('app'));
+}

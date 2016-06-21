@@ -3,7 +3,6 @@ const helpers = require('./helpers/root.helper');
 
 // Webpack Plugins
 const DedupePlugin = require('webpack/lib/optimize/DedupePlugin');
-const DefinePlugin = require('webpack/lib/DefinePlugin');
 const NoErrorsPlugin = require('webpack/lib/NoErrorsPlugin');
 const OccurrenceOrderPlugin = require('webpack/lib/optimize/OccurrenceOrderPlugin');
 const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
@@ -24,11 +23,6 @@ module.exports = merge(commonConfig, {
 
   plugins: [
     new DedupePlugin(),
-    new DefinePlugin({
-      "process.env": {
-         NODE_ENV: JSON.stringify("production")
-       }
-    }),
     new NoErrorsPlugin(),
     new OccurrenceOrderPlugin(),
     new UglifyJsPlugin({
