@@ -1,3 +1,4 @@
+import { reducer as form } from 'redux-form';
 import { combineReducers } from 'redux';
 
 import {
@@ -5,5 +6,6 @@ import {
 } from './modules/reducer';
 
 export default combineReducers({
+  form,
   formContainerReducer
 });
