@@ -1,11 +1,13 @@
 import { combineReducers } from 'redux';
-import { reducer as form } from 'redux-form';
 
 import {
+  formBusSelectReducer,
+  formBusStopsReducer,
   formContainerReducer
 } from './modules/reducer';
 
 export default combineReducers({
-  form,
+  formBusSelectReducer,
+  formBusStopsReducer,
   formContainerReducer
 });

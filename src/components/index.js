@@ -1,1 +1,1 @@
-export { default as FormTrainSelectComponent } from './FormTrainSelect/formTrainSelect.component';
+export { default as FormBusSelectComponent } from './FormBusSelect/formBusSelect.component';

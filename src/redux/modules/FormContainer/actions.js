@@ -1,60 +1,42 @@
 import {
-  FETCH_TRAIN_NAMES_REQUEST,
-  FETCH_TRAIN_NAMES_FAILURE,
-  FETCH_TRAIN_NAMES_SUCCESS,
-  UPDATE_SELECTED_DEPARTURE_TRAIN,
-  UPDATE_SELECTED_ARRIVAL_TRAIN
+  FETCH_BUS_NAMES_REQUEST,
+  FETCH_BUS_NAMES_FAILURE,
+  FETCH_BUS_NAMES_SUCCESS
 } from './constants';
 
-export function fetchTrainNames() {
+export function fetchBusNames() {
   return function (dispatch) {
     return fetch('http://api.metro.net/agencies/lametro/routes/')
-            .then(trains => {
-              dispatch(fetchTrainNamesRequest());
-              return trains.json();
+            .then(buses => {
+              dispatch(fetchBusNamesRequest());
+              return buses.json();
             })
-            .then(trainsInJSON => {
-              let listOfTrains = [];
-              trainsInJSON.items.map(train => listOfTrains.push(train.display_name));
-              dispatch(fetchTrainNamesSucceeded(listOfTrains));
+            .then(busesInJSON => {
+              dispatch(fetchBusNamesSucceeded(busesInJSON.items));
             })
-            .catch(()=> dispatch(fetchTrainNamesFailed()));
+            .catch(()=> dispatch(fetchBusNamesFailed()));
   };
 }
 
-export function fetchTrainNamesRequest() {
+export function fetchBusNamesRequest() {
   return {
-    type: FETCH_TRAIN_NAMES_REQUEST,
+    type: FETCH_BUS_NAMES_REQUEST,
     isFetching: true
   }
 }
 
-export function fetchTrainNamesFailed() {
+export function fetchBusNamesFailed() {
   return {
-    type: FETCH_TRAIN_NAMES_FAILURE,
+    type: FETCH_BUS_NAMES_FAILURE,
     isFetching: false,
-    error: 'Failed to fetch train data'
+    error: 'Failed to fetch bus data'
   }
 }
 
-export function fetchTrainNamesSucceeded(trains) {
+export function fetchBusNamesSucceeded(buses) {
   return {
-    type: FETCH_TRAIN_NAMES_SUCCESS,
+    type: FETCH_BUS_NAMES_SUCCESS,
     isFetching: false,
-    trains: trains
-  }
-}
-
-export function updateSelectedDepartureTrain(train) {
-  return {
-    type: UPDATE_SELECTED_DEPARTURE_TRAIN,
-    selectedDepartureTrain: train
-  }
-}
-
-export function updateSelectedArrivalTrain(train) {
-  return {
-    type: UPDATE_SELECTED_ARRIVAL_TRAIN,
-    selectedArrivalTrain: train
+    buses: buses
   }
 }

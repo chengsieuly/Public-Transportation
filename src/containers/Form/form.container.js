@@ -4,20 +4,23 @@ import { bindActionCreators } from 'redux';
 import * as actions from 'redux/modules/FormContainer/actions';
 
 import {
-  FormTrainSelectComponent
+  FormBusSelectComponent
 } from 'components';
 
 @connect(
-  state => ({}),
+  state => ({
+    buses: state.formContainerReducer.buses
+  }),
   dispatch => bindActionCreators(actions, dispatch)
 )
 
 class FormContainer extends React.Component {
   static propTypes = {
-    fetchTrainNames: React.PropTypes.func.isRequired,
-    fetchTrainNamesRequest: React.PropTypes.func.isRequired,
-    fetchTrainNamesFailed: React.PropTypes.func.isRequired,
-    fetchTrainNamesSucceeded: React.PropTypes.func.isRequired
+    buses: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
+    fetchBusNames: React.PropTypes.func.isRequired,
+    fetchBusNamesRequest: React.PropTypes.func.isRequired,
+    fetchBusNamesFailed: React.PropTypes.func.isRequired,
+    fetchBusNamesSucceeded: React.PropTypes.func.isRequired
   }
 
   constructor(props) {
@@ -25,18 +28,14 @@ class FormContainer extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchTrainNames();
+    this.props.fetchBusNames();
   }
 
   render() {
     return (
       <div>
-        <FormTrainSelectComponent
-          inputType="departure"
-          floatingLabelText="Departing from" />
-        <FormTrainSelectComponent
-          inputType="arrival"
-          floatingLabelText="Arriving at" />
+        <FormBusSelectComponent
+          buses={this.props.buses} />
       </div>
     );
   }
