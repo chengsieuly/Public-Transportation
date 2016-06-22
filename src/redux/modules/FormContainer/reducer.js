@@ -24,7 +24,7 @@ const reducer = (state = initialState, action={}) => {
     case FETCH_BUS_NAMES_SUCCESS:
       return Object.assign({}, state, {
         isFetching: action.isFetching,
-        buses: action.buses
+        buses: action.success
       });
     default:
       return state;
