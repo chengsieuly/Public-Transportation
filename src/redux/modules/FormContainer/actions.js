@@ -37,6 +37,6 @@ export function fetchBusNamesSucceeded(buses) {
   return {
     type: FETCH_BUS_NAMES_SUCCESS,
     isFetching: false,
-    buses: buses
+    success: buses
   }
 }
