@@ -7,13 +7,5 @@
 
   "plugins": [
     "transform-decorators-legacy"
-  ],
-
-  "env": {
-    "start": {
-      "presets": [
-        "react-hmre"
-      ]
-    }
-  }
+  ]
 }
