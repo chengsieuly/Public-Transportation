@@ -1,8 +1,11 @@
-const FETCH_BUS_STOPS_REQUEST = 'fetch bus stops';
-const FETCH_BUS_STOPS_SUCCESS = 'fetch bus stops success';
-const FETCH_BUS_STOPS_FAILURE = 'fetch bus stops failed';
+import {
+  FETCH_BUS_STOPS_REQUEST,
+  FETCH_BUS_STOPS_SUCCESS,
+  FETCH_BUS_STOPS_FAILURE
+} from './constants';
 
 const initialState = {
+  isFetching: false,
   stops: []
 }
 
@@ -10,29 +13,19 @@ export default function reducer(state=initialState, action) {
   switch (action.type) {
     case FETCH_BUS_STOPS_REQUEST:
       return Object.assign({}, state, {
-        stops: action.stops
+        isFetching: action.isFetching
+      })
+    case FETCH_BUS_STOPS_SUCCESS:
+      return Object.assign({}, state, {
+        isFetching: action.isFetching,
+        stops: action.success
+      })
+    case FETCH_BUS_STOPS_FAILURE:
+      return Object.assign({}, state, {
+        error: action.error,
+        isFetching: action.isFetching
       })
     default:
       return state
-  }
-}
-
-export function fetchBusStops(bus) {
-  return function(dispatch) {
-    return fetch(`http://api.metro.net/agencies/lametro/routes/${bus.id}/stops`)
-            .then(stops => {
-              return stops.json();
-            })
-            .then(stopsInJSON => {
-              dispatch(fetchBusStopsRequest(stopsInJSON.items));
-            })
-            .catch(() => console.log('failed'));
-  }
-}
-
-export function fetchBusStopsRequest(stops) {
-  return {
-    type: FETCH_BUS_STOPS_REQUEST,
-    stops: stops
   }
 }

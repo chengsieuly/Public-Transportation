@@ -3,7 +3,7 @@ import {
   UPDATE_SELECTED_ROUTE
 } from './constants';
 
-import { fetchBusStops } from '../FormBusStops/reducer';
+import { fetchBusStops } from '../FormBusStops/actions';
 
 export function newSelectedRoute(bus) {
   return function(dispatch) {
