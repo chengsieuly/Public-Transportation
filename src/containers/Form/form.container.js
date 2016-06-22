@@ -4,7 +4,6 @@ import { bindActionCreators } from 'redux';
 import * as actions from 'redux/modules/FormContainer/actions';
 
 import {
-  FormBusRoutesComponent,
   FormBusSelectComponent
 } from 'components';
 
@@ -33,12 +32,10 @@ class FormContainer extends React.Component {
   }
 
   render() {
-    const busNames = this.props.buses.map(bus => bus.display_name);
     return (
       <div>
         <FormBusSelectComponent
-          floatingLabelText="Bus Route Number" busNames={busNames} />
-        <FormBusRoutesComponent />
+          buses={this.props.buses} />
       </div>
     );
   }

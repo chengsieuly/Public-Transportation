@@ -12,9 +12,7 @@ export function fetchBusNames() {
               return buses.json();
             })
             .then(busesInJSON => {
-              let listOfBuses = [];
-              busesInJSON.items.map(bus => listOfBuses.push(bus.display_name));
-              dispatch(fetchBusNamesSucceeded(listOfBuses));
+              dispatch(fetchBusNamesSucceeded(busesInJSON.items));
             })
             .catch(()=> dispatch(fetchBusNamesFailed()));
   };

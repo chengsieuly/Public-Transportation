@@ -7,8 +7,7 @@ import {
 const initialState = {
   isFetching: false,
   error: '',
-  buses: [],
-  selectedRoute: ''
+  buses: []
 };
 
 const reducer = (state = initialState, action={}) => {

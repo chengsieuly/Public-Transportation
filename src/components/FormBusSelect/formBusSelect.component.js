@@ -6,34 +6,56 @@ import * as actions from 'redux/modules/FormBusSelect/actions';
 import AutoComplete from 'material-ui/AutoComplete';
 
 @connect(
-  state => ({}),
+  state => ({
+    selectedRoute: state.formBusSelectReducer.selectedRoute,
+    stops: state.formBusStopsReducer.stops
+  }),
   dispatch => bindActionCreators(actions, dispatch)
 )
 
 export default class FormBusSelectComponent extends React.Component {
   static propTypes = {
-    newSelectedRoute: React.PropTypes.func.isRequired
+    clearSelectedRoute: React.PropTypes.func.isRequired,
+    newSelectedRoute: React.PropTypes.func.isRequired,
+    selectedRoute: React.PropTypes.object.isRequired
   }
 
-  validateInput(bus) {
-    return this.props.busNames.includes(bus);
+  handleUpdateInput() {
+    if (this.props.selectedRoute.id) {
+      this.props.clearSelectedRoute();
+    }
   }
 
-  handleUpdateInput(bus) {
-    if (!this.validateInput(bus)) return;
-
+  handleNewRequest(bus) {
     this.props.newSelectedRoute(bus);
   }
 
   render() {
+    const { buses, stops } = this.props;
     return (
-      <AutoComplete {...this.props}
-        dataSource={this.props.busNames}
-        filter={AutoComplete.caseInsensitiveFilter}
-        fullWidth={true}
-        hintText="Select Route"
-        onUpdateInput={this.handleUpdateInput.bind(this)}
-        onNewRequest={this.handleUpdateInput.bind(this)} />
+      <div>
+        <AutoComplete {...this.props}
+          dataSource={buses}
+          dataSourceConfig={{text: 'display_name', value: 'display_name'}}
+          filter={AutoComplete.caseInsensitiveFilter}
+          floatingLabelText="Bus Route"
+          fullWidth={true}
+          hintText="Search Routes"
+          onUpdateInput={this.handleUpdateInput.bind(this)}
+          onNewRequest={this.handleNewRequest.bind(this)} />
+        {this.props.selectedRoute.id
+          ? <AutoComplete
+              ref="bus_stop"
+              dataSource={stops}
+              dataSourceConfig={{text: 'display_name', value: 'display_name'}}
+              filter={AutoComplete.caseInsensitiveFilter}
+              floatingLabelText="Bus Stop"
+              fullWidth={true}
+              hintText="Select Stop"
+              openOnFocus={true} />
+          : null
+        }
+      </div>
     )
   }
 }
