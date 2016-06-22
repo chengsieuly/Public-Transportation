@@ -6,32 +6,29 @@ import * as actions from 'redux/modules/FormBusSelect/actions';
 import AutoComplete from 'material-ui/AutoComplete';
 
 @connect(
-  state => ({
-    buses: state.formContainerReducer.buses
-  }),
+  state => ({}),
   dispatch => bindActionCreators(actions, dispatch)
 )
 
 export default class FormBusSelectComponent extends React.Component {
   static propTypes = {
-    buses: React.PropTypes.arrayOf(React.PropTypes.string),
-    updateSelectedRoute: React.PropTypes.func.isRequired
+    newSelectedRoute: React.PropTypes.func.isRequired
   }
 
   validateInput(bus) {
-    return this.props.buses.includes(bus);
+    return this.props.busNames.includes(bus);
   }
 
   handleUpdateInput(bus) {
     if (!this.validateInput(bus)) return;
 
-    this.props.updateSelectedRoute(bus);
+    this.props.newSelectedRoute(bus);
   }
 
   render() {
     return (
       <AutoComplete {...this.props}
-        dataSource={this.props.buses}
+        dataSource={this.props.busNames}
         filter={AutoComplete.caseInsensitiveFilter}
         fullWidth={true}
         hintText="Select Route"

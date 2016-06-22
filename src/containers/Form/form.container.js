@@ -9,12 +9,15 @@ import {
 } from 'components';
 
 @connect(
-  state => ({}),
+  state => ({
+    buses: state.formContainerReducer.buses
+  }),
   dispatch => bindActionCreators(actions, dispatch)
 )
 
 class FormContainer extends React.Component {
   static propTypes = {
+    buses: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
     fetchBusNames: React.PropTypes.func.isRequired,
     fetchBusNamesRequest: React.PropTypes.func.isRequired,
     fetchBusNamesFailed: React.PropTypes.func.isRequired,
@@ -30,10 +33,11 @@ class FormContainer extends React.Component {
   }
 
   render() {
+    const busNames = this.props.buses.map(bus => bus.display_name);
     return (
       <div>
         <FormBusSelectComponent
-          floatingLabelText="Bus Route Number" />
+          floatingLabelText="Bus Route Number" busNames={busNames} />
         <FormBusRoutesComponent />
       </div>
     );
