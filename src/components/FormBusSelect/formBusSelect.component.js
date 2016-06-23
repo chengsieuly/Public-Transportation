@@ -37,8 +37,8 @@ export default class FormBusSelectComponent extends React.Component {
       <div>
         <AutoComplete {...this.props}
           dataSource={buses}
-          dataSourceConfig={{text: 'id', value: 'display_name'}}
-          filter={AutoComplete.caseInsensitiveFilter}
+          dataSourceConfig={{text: 'display_name', value: 'display_name'}}
+          filter={AutoComplete.fuzzyFilter}
           floatingLabelText="Bus Route"
           fullWidth={true}
           hintText="Search Routes"
@@ -49,7 +49,7 @@ export default class FormBusSelectComponent extends React.Component {
               ref="bus_stop"
               dataSource={stops}
               dataSourceConfig={{text: 'display_name', value: 'display_name'}}
-              filter={AutoComplete.caseInsensitiveFilter}
+              filter={AutoComplete.fuzzyFilter}
               floatingLabelText="Bus Stop"
               fullWidth={true}
               hintText="Select Bus Stop for More Info"
