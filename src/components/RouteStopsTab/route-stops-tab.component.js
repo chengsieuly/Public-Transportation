@@ -1,19 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Table, TableBody, TableFooter, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
+import { updateSelectedBusStop } from 'redux/modules/FormBusStops/actions';
 
 @connect(
   state => ({
     stops: state.formBusStopsReducer.stops
-  })
+  }), {updateSelectedBusStop}
 )
 
 export default class RouteStopsTabComponent extends React.Component {
   render() {
-    const { stops } = this.props;
+    const { stops, updateSelectedBusStop } = this.props;
     return (
       <Table
-        selectable={false} >
+        onRowSelection={updateSelectedBusStop}>
         <TableHeader
           displaySelectAll={false}
           adjustForCheckbox={false} >
@@ -23,7 +24,8 @@ export default class RouteStopsTabComponent extends React.Component {
           </TableRow>
         </TableHeader>
         <TableBody
-          displayRowCheckbox={false} >
+          displayRowCheckbox={false}
+          preScanRows={false} >
           { stops.map((stop, i) => {
             return (
               <TableRow key={i}>

@@ -3,7 +3,7 @@ import {
   UPDATE_SELECTED_ROUTE
 } from './constants';
 
-import { fetchBusStops } from '../FormBusStops/actions';
+import { fetchBusStops, updateSelectedBusStop } from '../FormBusStops/actions';
 
 export function newSelectedRoute(bus) {
   return function(dispatch) {
@@ -22,5 +22,11 @@ export function updateSelectedRoute(bus) {
 export function clearSelectedRoute() {
   return {
     type: CLEAR_SELECTED_ROUTE
+  }
+}
+
+export function getBusStopDetail(selectedStop) {
+  return function(dispatch) {
+    dispatch(updateSelectedBusStop(selectedStop));
   }
 }

@@ -16,6 +16,7 @@ import AutoComplete from 'material-ui/AutoComplete';
 export default class FormBusSelectComponent extends React.Component {
   static propTypes = {
     clearSelectedRoute: React.PropTypes.func.isRequired,
+    getBusStopDetail: React.PropTypes.func.isRequired,
     newSelectedRoute: React.PropTypes.func.isRequired,
     selectedRoute: React.PropTypes.object.isRequired
   }
@@ -31,7 +32,7 @@ export default class FormBusSelectComponent extends React.Component {
   }
 
   render() {
-    const { buses, stops } = this.props;
+    const { getBusStopDetail, buses, stops } = this.props;
     return (
       <div>
         <AutoComplete {...this.props}
@@ -52,7 +53,8 @@ export default class FormBusSelectComponent extends React.Component {
               floatingLabelText="Bus Stop"
               fullWidth={true}
               hintText="Select Bus Stop for More Info"
-              openOnFocus={true} />
+              openOnFocus={true}
+              onNewRequest={getBusStopDetail} />
           : null
         }
       </div>
