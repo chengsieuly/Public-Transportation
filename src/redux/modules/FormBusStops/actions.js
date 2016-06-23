@@ -12,6 +12,7 @@ export function fetchBusStops(bus) {
               return stops.json();
             })
             .then(stopsInJSON => {
+              stopsInJSON.items.sort(function(a,b) {return (a.display_name > b.display_name) ? 1 : ((b.display_name > a.display_name) ? -1 : 0);} );
               dispatch(fetchBusStopsSuccess(stopsInJSON.items));
             })
             .catch(() => dispatch(fetchBusStopsFailure()));
