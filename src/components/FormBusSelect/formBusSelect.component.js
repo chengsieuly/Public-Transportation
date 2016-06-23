@@ -20,13 +20,13 @@ export default class FormBusSelectComponent extends React.Component {
     selectedRoute: React.PropTypes.object.isRequired
   }
 
-  handleUpdateInput() {
+  handleRouteUpdateInput() {
     if (this.props.selectedRoute.id) {
       this.props.clearSelectedRoute();
     }
   }
 
-  handleNewRequest(bus) {
+  handleRouteNewRequest(bus) {
     this.props.newSelectedRoute(bus);
   }
 
@@ -36,13 +36,13 @@ export default class FormBusSelectComponent extends React.Component {
       <div>
         <AutoComplete {...this.props}
           dataSource={buses}
-          dataSourceConfig={{text: 'display_name', value: 'display_name'}}
+          dataSourceConfig={{text: 'id', value: 'display_name'}}
           filter={AutoComplete.caseInsensitiveFilter}
           floatingLabelText="Bus Route"
           fullWidth={true}
           hintText="Search Routes"
-          onUpdateInput={this.handleUpdateInput.bind(this)}
-          onNewRequest={this.handleNewRequest.bind(this)} />
+          onUpdateInput={this.handleRouteUpdateInput.bind(this)}
+          onNewRequest={this.handleRouteNewRequest.bind(this)} />
         {this.props.selectedRoute.id
           ? <AutoComplete
               ref="bus_stop"
@@ -51,7 +51,7 @@ export default class FormBusSelectComponent extends React.Component {
               filter={AutoComplete.caseInsensitiveFilter}
               floatingLabelText="Bus Stop"
               fullWidth={true}
-              hintText="Select Stop"
+              hintText="Select Bus Stop for More Info"
               openOnFocus={true} />
           : null
         }

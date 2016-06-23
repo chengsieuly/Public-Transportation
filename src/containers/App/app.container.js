@@ -7,7 +7,8 @@ import Helmet from 'react-helmet';
 import AppBar from 'material-ui/AppBar';
 
 import {
-  FormContainer
+  FormContainer,
+  TabDisplayContainer
 } from 'containers';
 
 export default class AppContainer extends React.Component {
@@ -21,6 +22,7 @@ export default class AppContainer extends React.Component {
           zDepth={2}>
         </AppBar>
         <FormContainer />
+        <TabDisplayContainer />
       </div>
     )
   }
