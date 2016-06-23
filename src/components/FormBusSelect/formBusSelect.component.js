@@ -45,7 +45,6 @@ export default class FormBusSelectComponent extends React.Component {
           onNewRequest={this.handleNewRequest.bind(this)} />
         {this.props.selectedRoute.id
           ? <AutoComplete
-              ref="bus_stop"
               dataSource={stops}
               dataSourceConfig={{text: 'display_name', value: 'display_name'}}
               filter={AutoComplete.caseInsensitiveFilter}
