@@ -4,7 +4,9 @@ import {
 } from './constants';
 
 const initialState = {
-  selectedRoute: {}
+  selectedRoute: {},
+  runs: [],
+  stopSequence: []
 };
 
 const reducer = (state = initialState, action={}) => {
@@ -15,7 +17,9 @@ const reducer = (state = initialState, action={}) => {
       })
     case UPDATE_SELECTED_ROUTE:
       return Object.assign({}, state, {
-        selectedRoute: action.selectedRoute
+        selectedRoute: action.selectedRoute,
+        runs: action.runs,
+        stopSequence: action.stopSequence
       });
     default:
       return state;

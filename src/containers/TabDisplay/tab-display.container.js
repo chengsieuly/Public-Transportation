@@ -6,6 +6,7 @@ import FlatButton from 'material-ui/FlatButton';
 import { closeBusStopDialog } from 'redux/modules/FormBusStops/actions';
 
 import {
+  RouteInfoTabComponent,
   RouteStopsTabComponent
 } from 'components';
 
@@ -97,6 +98,11 @@ export default class TabDisplayContainer extends React.Component {
             icon={<i className="fa fa-envira" />}
             label="Stops" >
             <RouteStopsTabComponent />
+         </Tab>
+         <Tab
+            icon={<i className="fa fa-bus" />}
+            label="Route Info" >
+            <RouteInfoTabComponent />
          </Tab>
        </Tabs>
      </div>
