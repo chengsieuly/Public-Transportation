@@ -7,7 +7,7 @@
     "start": "better-npm-run start",
     "build": "rimraf dist && better-npm-run build",
     "build:run": "better-npm-run build:run",
-    "deploy": "npm run build && surge -p dist --domain public-transporation.surge.sh"
+    "deploy": "npm run build && surge -p dist --domain public-transportation.surge.sh"
   },
   "betterScripts": {
     "start": {
