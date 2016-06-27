@@ -5,9 +5,9 @@
   "main": "server.js",
   "scripts": {
     "start": "better-npm-run start",
-    "build": "rimraf dist && better-npm-run build",
+    "build": "rimraf dist && better-npm-run build && gulp generate-service-worker",
     "build:run": "better-npm-run build:run",
-    "deploy": "npm run build && surge -p dist --domain public-transportation.surge.sh"
+    "deploy": "surge -p dist --domain public-transportation.surge.sh"
   },
   "betterScripts": {
     "start": {
@@ -51,6 +51,7 @@
     "babel-preset-survivejs-kanban": "^0.3.3",
     "copy-webpack-plugin": "^3.0.1",
     "css-loader": "^0.23.1",
+    "ejs-loader": "^0.3.0",
     "eslint": "^2.4.0",
     "eslint-plugin-react": "^4.2.3",
     "extract-text-webpack-plugin": "^1.0.1",
@@ -66,6 +67,7 @@
     "resolve-url-loader": "^1.4.3",
     "sass-loader": "^3.2.0",
     "style-loader": "^0.13.1",
+    "sw-precache": "^3.2.0",
     "url-loader": "^0.5.7",
     "webpack": "^1.12.14",
     "webpack-dev-server": "^1.14.1",

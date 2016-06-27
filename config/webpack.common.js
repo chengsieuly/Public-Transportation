@@ -28,7 +28,8 @@ module.exports = {
   module: {
     loaders: [
       { test: /\.jsx?$/, loaders: ['babel?cacheDirectory'], include: helpers.root('src') },
-      { test: /\.scss$/, loaders: ['style', 'css', 'postcss', 'sass'], include: helpers.root('src') }
+      { test: /\.scss$/, loaders: ['style', 'css', 'postcss', 'sass'], include: helpers.root('src') },
+      { test: /\.ejs$/, loader: 'ejs', include: helpers.root('src', 'template') }
     ]
   },
 
@@ -56,10 +57,10 @@ module.exports = {
     new ExtractTextPlugin('[name].[hash].css'),
 
     new HtmlWebpackPlugin({
-      template: helpers.root('src', 'index.ejs'),
+      template: helpers.root('src', 'template', 'index.ejs'),
       appMountId: 'app',
-      inject: false
+      inject: false,
+      production: process.env.NODE_ENV === 'production'
     })
-
   ]
 }
